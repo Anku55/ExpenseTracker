@@ -1,4 +1,3 @@
-
 #ifndef EXPENSE_H
 #define EXPENSE_H
 
@@ -13,11 +12,11 @@ private:
     std::string description;
 
 public:
-    Expense(int id,
-            double amount,
-            const std::string& category,
-            const std::string& date,
-            const std::string& description);
+    Expense(int idValue,
+            double amountValue,
+            const std::string& categoryValue,
+            const std::string& dateValue,
+            const std::string& descriptionValue);
 
     int getId() const;
     double getAmount() const;

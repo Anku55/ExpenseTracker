@@ -1,16 +1,16 @@
 
 #include "Expense.h"
 
-Expense::Expense(int id,
-                 double amount,
-                 const std::string& category,
-                 const std::string& date,
-                 const std::string& description)
-    : id(id),
-      amount(amount),
-      category(category),
-      date(date),
-      description(description) {
+Expense::Expense(int idValue,
+                 double amountValue,
+                 const std::string& categoryValue,
+                 const std::string& dateValue,
+                 const std::string& descriptionValue)
+    : id(idValue),
+      amount(amountValue),
+      category(categoryValue),
+      date(dateValue),
+      description(descriptionValue) {
 }
 
 int Expense::getId() const {

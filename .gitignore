@@ -1,71 +1,54 @@
-# Prerequisites
-*.d
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# GCC / MinGW compiled outputs
 *.exe
 *.out
-*.app
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.pdb
+*.ilk
+*.gch
+*.pch
+*.d
+*.dwo
 
-# Build directories
+# Build and coverage artifacts
 build/
-Build/
 build-*/
-
-# CMake generated files
+cmake-build-*/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-Makefile
-install_manifest.txt
 compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
 Testing/
 .cache/
+coverage/
+*.gcda
+*.gcno
+*.profraw
 
-# Local expense data backups
+# Temporary files, editor swaps, and logs
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+*.bak
+
+# VS Code: ignore machine/user-specific workspace settings,
+# but allow shared tasks, launch configs, and recommended extensions if desired.
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Local expense records can contain personal financial data.
+expenses.txt
 expenses.backup.txt
+
+expenses.local-backup.txt
