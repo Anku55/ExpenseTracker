@@ -1,30 +1,86 @@
 
+#include "ExpenseTracker.h"
+
 #include <iostream>
-#include <iomanip>
-#include "Expense.h"
+#include <sstream>
+#include <string>
+
+namespace {
+
+bool parseMenuChoice(const std::string& input, int& choice) {
+    std::istringstream stream(input);
+    char extra;
+
+    if (!(stream >> choice)) {
+        return false;
+    }
+
+    // Allow surrounding whitespace, but reject extra non-whitespace text.
+    if (stream >> extra) {
+        return false;
+    }
+
+    return true;
+}
+
+} // namespace
 
 int main() {
-    Expense expense(
-        1,
-        250.50,
-        "Food",
-        "2026-10-11",
-        "Lunch with friends"
-    );
+    ExpenseTracker tracker;
+    tracker.loadExpenses();
 
-    std::cout << "Expense Tracker - Milestone 1\n";
-    std::cout << "------------------------------\n";
+    while (true) {
+        std::cout << "\n===== Expense Tracker =====\n"
+                  << "1. Add Expense\n"
+                  << "2. View All Expenses\n"
+                  << "3. Monthly Expense Summary\n"
+                  << "4. Category-wise Analysis\n"
+                  << "5. Exit\n"
+                  << "Enter your choice: ";
 
-    std::cout << "ID: " << expense.getId() << '\n';
-    std::cout << "Date: " << expense.getDate() << '\n';
-    std::cout << "Category: " << expense.getCategory() << '\n';
+        std::string input;
 
-    std::cout << "Amount: Rs. "
-              << std::fixed << std::setprecision(2)
-              << expense.getAmount() << '\n';
+        if (!std::getline(std::cin, input)) {
+            std::cout << "\nInput ended. Exiting Expense Tracker.\n";
+            break;
+        }
 
-    std::cout << "Description: "
-              << expense.getDescription() << '\n';
+        int choice = 0;
+
+        if (!parseMenuChoice(input, choice)) {
+            std::cout
+                << "Invalid choice. Enter a number from 1 to 5.\n";
+            continue;
+        }
+
+        if (choice < 1 || choice > 5) {
+            std::cout
+                << "Invalid choice. Enter a number from 1 to 5.\n";
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                tracker.addExpense();
+                break;
+
+            case 2:
+                tracker.viewAllExpenses();
+                break;
+
+            case 3:
+                tracker.monthlyExpenseSummary();
+                break;
+
+            case 4:
+                tracker.categoryWiseAnalysis();
+                break;
+
+            case 5:
+                std::cout << "Exiting Expense Tracker. Goodbye!\n";
+                return 0;
+        }
+    }
 
     return 0;
 }
